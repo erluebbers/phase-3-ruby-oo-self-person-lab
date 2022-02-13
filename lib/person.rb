@@ -1,3 +1,5 @@
+require 'pry'
+
 class Person
   attr_reader :name
   attr_accessor :bank_account, :happiness, :hygiene
@@ -54,13 +56,25 @@ class Person
   end
 
   def call_friend friend
-    friend.happiness=(@happiness += 3)
+    friend.happiness += 3
     self.happiness=(@happiness += 3)
     "Hi #{friend.name}! It's #{self.name}. How are you?"
   end
 
-
-
+  def start_conversation(friend, topic)
+    case topic
+    when "politics"
+      friend.happiness -= 2
+      self.happiness=(@happiness -= 2)
+      'blah blah partisan blah lobbyist'
+    when 'weather'
+      friend.happiness += 1
+      self.happiness=(@happiness += 1)
+      'blah blah sun blah rain'
+    else 
+      'blah blah blah blah blah'
+    end
+  end
 
 
 end
